@@ -12,7 +12,7 @@
 	<target name="jar" depends="clean,compile" description="Jar the project">
 		<mkdir dir="${PROJECT_HOME}/build/dist"/>
 		<jar destfile="${PROJECT_HOME}/build/dist/${PROJECT_SHORT_NAME}-${VERSION}.jar">
-			<fileset dir="${PROJECT_HOME}/bin" includes="**/*"/>
+			<fileset dir="${PROJECT_HOME}/build/classes" includes="**/*"/>
 		</jar>
 	</target>
 	
