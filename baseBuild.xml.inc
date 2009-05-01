@@ -19,7 +19,7 @@
 	<target name="jar-taglib" depends="clean,compile" description="Jar the project as a taglib.">
 		<mkdir dir="${PROJECT_HOME}/build/dist"/>
 		<jar destfile="${PROJECT_HOME}/build/dist/${PROJECT_SHORT_NAME}-${VERSION}.jar">
-			<fileset dir="${PROJECT_HOME}/bin" includes="**/*"/>
+			<fileset dir="${PROJECT_HOME}/build/classes" includes="**/*"/>
 			<metainf dir="${PROJECT_HOME}/WebContent/WEB-INF/tlds">
 				<include name="*.tld"/>
 			</metainf>
