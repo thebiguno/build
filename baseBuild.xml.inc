@@ -20,6 +20,7 @@
 		<mkdir dir="${PROJECT_HOME}/build/dist"/>
 		<jar destfile="${PROJECT_HOME}/build/dist/${PROJECT_SHORT_NAME}-${VERSION}.jar">
 			<fileset dir="${PROJECT_HOME}/build/classes" includes="**/*"/>
+			<fileset dir="${PROJECT_HOME}/src" includes="**/*"/>
 			<metainf dir="${PROJECT_HOME}/WebContent/WEB-INF/tlds">
 				<include name="*.tld"/>
 			</metainf>
@@ -28,7 +29,12 @@
 
 	<target name="compile" depends="clean" description="Builds the project">
 		<mkdir dir="${PROJECT_HOME}/build/classes"/>
-		<javac srcdir="src" destdir="build/classes" debug="true" debuglevel="lines, vars, source" classpathref="classpath"/>
+		<javac srcdir="src" 
+			includes="**/*" 
+			destdir="build/classes" 
+			debug="true" 
+			debuglevel="lines,vars,source" 
+			classpathref="classpath"/>
 	</target>
 
 	<target name="clean" description="Removes all files from build directory">
