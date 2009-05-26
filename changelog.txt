@@ -1,0 +1,6 @@
+1.0.1.0 - May 26 2009
+-Use conditional logic to test whether a project should be built as a taglib or a standard jar; all implementing build scrips now just need to call 'jar', instead of 'jar-taglib' if the project is a taglib.
+-Added 'release' target, to make a .zip containing documentation, javadocs, and the .jar.
+
+1.0.0.0 - April 29 2009
+-Initial release.
