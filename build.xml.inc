@@ -17,7 +17,7 @@
 				<include name="*.jar"/>
 			</zipfileset>
 			<zipfileset prefix="javadocs" dir="${PROJECT_HOME}/build/javadocs"/>
-			<zipfileset prefix="doc" dir="${PROJECT_HOME}/etc/">
+			<zipfileset prefix="docs" dir="${PROJECT_HOME}/docs/">
 				<include name="*.txt"/>
 			</zipfileset>
 		</zip>
