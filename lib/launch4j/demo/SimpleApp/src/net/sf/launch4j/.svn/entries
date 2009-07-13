@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<wc-entries
+   xmlns="svn:">
+<entry
+   revision="502"
+   url="https://svn.sourceforge.net/svnroot/buddi/trunk/launch4j/demo/SimpleApp/src/net/sf/launch4j"
+   last-author="olsonw"
+   committed-date="2006-09-21T00:38:39.041295Z"
+   kind="dir"
+   name=""
+   committed-rev="493"/>
+<entry
+   kind="dir"
+   name="example"/>
+</wc-entries>

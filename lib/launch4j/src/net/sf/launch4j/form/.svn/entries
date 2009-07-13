@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<wc-entries
+   xmlns="svn:">
+<entry
+   revision="502"
+   url="https://svn.sourceforge.net/svnroot/buddi/trunk/launch4j/src/net/sf/launch4j/form"
+   last-author="olsonw"
+   committed-date="2006-09-21T00:38:39.041295Z"
+   kind="dir"
+   name=""
+   committed-rev="493"/>
+<entry
+   checksum="fbcb9a65db3611970d5e34195f819ff2"
+   last-author="olsonw"
+   prop-time="2006-09-21T00:36:53.000000Z"
+   text-time="2006-01-25T07:47:39.000000Z"
+   committed-date="2006-09-21T00:38:39.041295Z"
+   kind="file"
+   name="Config.jfrm"
+   committed-rev="493"/>
+<entry
+   checksum="c4bec0cf240ed79c89e20bb3e6e27e0d"
+   last-author="olsonw"
+   text-time="2006-01-25T07:47:39.000000Z"
+   committed-date="2006-09-21T00:38:39.041295Z"
+   kind="file"
+   name="ConfigForm.java"
+   committed-rev="493"/>
+</wc-entries>

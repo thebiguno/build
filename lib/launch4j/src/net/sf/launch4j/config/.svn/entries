@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="utf-8"?>
+<wc-entries
+   xmlns="svn:">
+<entry
+   revision="502"
+   url="https://svn.sourceforge.net/svnroot/buddi/trunk/launch4j/src/net/sf/launch4j/config"
+   last-author="olsonw"
+   committed-date="2006-09-21T00:38:39.041295Z"
+   kind="dir"
+   name=""
+   committed-rev="493"/>
+<entry
+   checksum="aba52425121fd5326c22c3c3037c51f6"
+   last-author="olsonw"
+   text-time="2006-05-25T17:06:21.000000Z"
+   committed-date="2006-09-21T00:38:39.041295Z"
+   kind="file"
+   name="Config.java"
+   committed-rev="493"/>
+<entry
+   checksum="b702f671249598d74027771d365784d0"
+   last-author="olsonw"
+   text-time="2006-03-27T17:35:00.000000Z"
+   committed-date="2006-09-21T00:38:39.041295Z"
+   kind="file"
+   name="ConfigPersister.java"
+   committed-rev="493"/>
+<entry
+   checksum="08b374c5357266f1dade0de44d03fc69"
+   last-author="olsonw"
+   text-time="2006-03-27T17:35:00.000000Z"
+   committed-date="2006-09-21T00:38:39.041295Z"
+   kind="file"
+   name="ConfigPersisterException.java"
+   committed-rev="493"/>
+<entry
+   checksum="8cc1b78d3cfa4d25581e54a283bb665f"
+   last-author="olsonw"
+   text-time="2006-07-18T14:23:01.000000Z"
+   committed-date="2006-09-21T00:38:39.041295Z"
+   kind="file"
+   name="Jre.java"
+   committed-rev="493"/>
+<entry
+   checksum="d3826e52ecfdf05bab09e004c107efe0"
+   last-author="olsonw"
+   text-time="2006-03-27T17:35:00.000000Z"
+   committed-date="2006-09-21T00:38:39.041295Z"
+   kind="file"
+   name="LdDefaults.java"
+   committed-rev="493"/>
+<entry
+   checksum="18b75edb052c567a3457c47fd36d0297"
+   last-author="olsonw"
+   text-time="2006-03-27T17:35:00.000000Z"
+   committed-date="2006-09-21T00:38:39.041295Z"
+   kind="file"
+   name="Messages.java"
+   committed-rev="493"/>
+<entry
+   checksum="99572d02faace3d759b96339b09781de"
+   last-author="olsonw"
+   text-time="2006-03-27T17:35:00.000000Z"
+   committed-date="2006-09-21T00:38:39.041295Z"
+   kind="file"
+   name="Splash.java"
+   committed-rev="493"/>
+<entry
+   checksum="0a3585a011f6b6960b5f4e96132fed27"
+   last-author="olsonw"
+   text-time="2006-03-27T17:35:00.000000Z"
+   committed-date="2006-09-21T00:38:39.041295Z"
+   kind="file"
+   name="VersionInfo.java"
+   committed-rev="493"/>
+<entry
+   checksum="cca702bba44411518f393c671ece6e91"
+   last-author="olsonw"
+   text-time="2006-07-18T14:23:01.000000Z"
+   committed-date="2006-09-21T00:38:39.041295Z"
+   kind="file"
+   name="messages.properties"
+   committed-rev="493"/>
+<entry
+   checksum="b4d6b3bc80976a9e8d24373f888d65c1"
+   last-author="olsonw"
+   text-time="2006-01-25T07:47:39.000000Z"
+   committed-date="2006-09-21T00:38:39.041295Z"
+   kind="file"
+   name="messages_es.properties"
+   committed-rev="493"/>
+</wc-entries>

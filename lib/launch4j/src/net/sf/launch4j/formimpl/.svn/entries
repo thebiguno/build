@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="utf-8"?>
+<wc-entries
+   xmlns="svn:">
+<entry
+   revision="502"
+   url="https://svn.sourceforge.net/svnroot/buddi/trunk/launch4j/src/net/sf/launch4j/formimpl"
+   last-author="olsonw"
+   committed-date="2006-09-21T00:38:39.041295Z"
+   kind="dir"
+   name=""
+   committed-rev="493"/>
+<entry
+   checksum="faa4ecb481530ea80ec94f3f1dec8783"
+   last-author="olsonw"
+   text-time="2006-03-27T17:35:00.000000Z"
+   committed-date="2006-09-21T00:38:39.041295Z"
+   kind="file"
+   name="ConfigFormImpl.java"
+   committed-rev="493"/>
+<entry
+   checksum="31163bff4ffeb8232fd6d58998971481"
+   last-author="olsonw"
+   text-time="2005-06-20T17:25:20.000000Z"
+   committed-date="2006-09-21T00:38:39.041295Z"
+   kind="file"
+   name="GlassPane.java"
+   committed-rev="493"/>
+<entry
+   checksum="8a3fe6c9c5fe1361f6c0a847e01a1ac8"
+   last-author="olsonw"
+   text-time="2006-07-20T13:29:41.000000Z"
+   committed-date="2006-09-21T00:38:39.041295Z"
+   kind="file"
+   name="MainFrame.java"
+   committed-rev="493"/>
+<entry
+   checksum="759b3992b251f79140b8b068b8376b5f"
+   last-author="olsonw"
+   text-time="2006-03-27T17:35:00.000000Z"
+   committed-date="2006-09-21T00:38:39.041295Z"
+   kind="file"
+   name="Messages.java"
+   committed-rev="493"/>
+<entry
+   checksum="e86a20cb465c00990369a04964577af9"
+   last-author="olsonw"
+   text-time="2006-07-18T14:36:31.000000Z"
+   committed-date="2006-09-21T00:38:39.041295Z"
+   kind="file"
+   name="messages.properties"
+   committed-rev="493"/>
+<entry
+   checksum="085385f7a1dbb4ba365f7e6b0ad40460"
+   last-author="olsonw"
+   text-time="2006-01-25T07:47:39.000000Z"
+   committed-date="2006-09-21T00:38:39.041295Z"
+   kind="file"
+   name="messages_es.properties"
+   committed-rev="493"/>
+</wc-entries>
