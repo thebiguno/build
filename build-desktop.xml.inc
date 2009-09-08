@@ -16,6 +16,9 @@ To take full advantage of this, you must have the following directory structure:
 		osx/    (Platform specific .jars / .jnilib, only included in relevant distributions)
 		windows/
 		linux/
+			i686/ (Specific jni libraries, for a given platform) 
+			ia64/
+			...
 		
 This script will try to give meaningful error messages if a file is missing, but there 
 are no guarantees 8-)
@@ -25,6 +28,82 @@ are no guarantees 8-)
 	<property name="BUILD_TOOLS" value="../ca.digitalcave.build/"/>
 	<property name="BUILD_LIB" value="${BUILD_TOOLS}/lib/"/>
 	<property name="BUILD_ETC" value="${BUILD_TOOLS}/etc/"/>
+
+	<target name="win" depends="jar" description="Builds a fat jar wrapped in an .exe for execution on Windows.">
+		<taskdef name="launch4j" classpath="${BUILD_LIB}/launch4j/launch4j.jar:${BUILD_LIB}/launch4j/lib/xstream.jar" classname="net.sf.launch4j.ant.Launch4jTask" />
+
+		<mkdir dir="${PROJECT_HOME}/build/win/${PROJECT_NAME}"/>
+		<launch4j>
+			<config 
+				dontWrapJar="true" 
+				jar="${PROJECT_SHORT_NAME}-${VERSION}.jar"
+				jarPath="." 
+				outfile="${PROJECT_HOME}/build/win/${PROJECT_NAME}/${PROJECT_SHORT_NAME}-${VERSION}.exe" 
+				errTitle="${PROJECT_NAME}"
+				chdir="."
+				stayAlive="true"
+				icon="${PROJECT_HOME}/img/win/${PROJECT_SHORT_NAME}.ico">
+				
+				<classpath mainclass="${MAIN_CLASS}">
+					<cp>./*.jar</cp>
+				</classpath>
+				
+				<jre
+					minVersion="1.5.0"
+					initialHeapSize="2"
+					maxHeapSize="512"/>
+
+				<versionInfo
+			    	fileVersion="${VERSION}"
+					fileDescription="${PROJECT_DESCRIPTION}"
+			    	txtFileVersion="${VERSION}"
+				    copyright="${PROJECT_COPYRIGHT}"
+				    productVersion="${VERSION}"
+			    	txtProductVersion="${VERSION}"
+			    	productName="${PROJECT_NAME}"
+			    	companyName="${PROJECT_COPYRIGHT}"
+			    	internalName="${PROJECT_NAME}"
+			    	originalFilename="${PROJECT_SHORT_NAME}-${VERSION}.exe"/>
+			</config>
+		</launch4j>
+		
+		<copy todir="${PROJECT_HOME}/build/win/${PROJECT_NAME}">
+			<fileset dir="${PROJECT_HOME}/docs">
+				<include name="*.txt"/>
+				<include name="*.rtf"/>
+				<include name="Licenses/*"/>
+			</fileset>
+		</copy>
+
+		<copy todir="${PROJECT_HOME}/build/win/${PROJECT_NAME}">
+			<fileset dir="${PROJECT_HOME}/build/dist">
+				<include name="${PROJECT_SHORT_NAME}-${VERSION}.jar"/>
+			</fileset>
+		</copy>
+		
+		<copy todir="${PROJECT_HOME}/build/win/${PROJECT_NAME}">
+			<fileset dir="${PROJECT_HOME}/lib">
+				<include name="*.jar"/>
+			</fileset>
+		</copy>
+		
+		<copy todir="${PROJECT_HOME}/build/win/${PROJECT_NAME}">
+			<fileset dir="${PROJECT_HOME}/lib/win">
+				<include name="*.dll"/>
+			</fileset>
+		</copy>
+		
+		<zip destfile="${PROJECT_HOME}/build/dist/${PROJECT_NAME}-Windows.zip">
+			<fileset dir="${PROJECT_HOME}/build/win/${PROJECT_NAME}"/>
+		</zip>
+
+	</target>
+
+	
+	<target name="linux" depends="jar" description="Builds all Linux packages as defined for the project.  If available, we will also bundle the distro packages for each architecture.">
+	
+	</target>
+	
 	
 	<target name="osx" depends="jar" description="Builds an OSX package, using JarBundler.  If on a Mac, will also wrap this in a .dmg; otherwise, will wrap in .zip">
 		<taskdef name="jarbundler" classpath="${BUILD_LIB}/jarbundler/jarbundler-1.9.jar" classname="net.sourceforge.jarbundler.JarBundler"/>

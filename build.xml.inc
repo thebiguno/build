@@ -54,6 +54,9 @@
 	<target name="compile" depends="clean" description="Builds the project">
 		<mkdir dir="${PROJECT_HOME}/build/classes"/>
 		<javac srcdir="src" 
+			target="1.5"
+			source="1.5" 
+			optimize="true" 
 			includes="**/*" 
 			destdir="build/classes" 
 			debug="true" 
