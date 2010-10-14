@@ -111,7 +111,7 @@ are no guarantees 8-)
 		<mkdir dir="${PROJECT_HOME}/build/osx/${PROJECT_NAME}"/>
 		<jarbundler dir="${PROJECT_HOME}/build/osx/${PROJECT_NAME}" verbose="true" showPlist="false"
 	        name="${PROJECT_NAME}"
-	        shortname="${PROJECT_SHORT_NAME}"
+	        shortname="${PROJECT_NAME}"
 	        signature="????"
 	        stubfile="${BUILD_ETC}/osx/JavaApplicationStub"
 	        mainclass="${MAIN_CLASS}"
