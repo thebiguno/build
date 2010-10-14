@@ -23,7 +23,7 @@
 		</zip>
 	</target> 
 
-	<target name="jar" depends="clean,compile" description="Jar the project, choosing between standard and taglib as apropriate">
+	<target name="jar" depends="clean,compile" description="Jar the project">
 		<condition property="is-taglib-project">
 			<available file="${PROJECT_HOME}/WebContent/WEB-INF/tlds" type="dir"/>
 		</condition>
@@ -32,7 +32,7 @@
 		<antcall target="jar-taglib"/>
 	</target>
 
-	<target name="jar-standard" description="Jar the project" unless="is-taglib-project">
+	<target name="jar-standard" unless="is-taglib-project">
 		<mkdir dir="${PROJECT_HOME}/build/dist"/>
 		<jar destfile="${PROJECT_HOME}/build/dist/${PROJECT_SHORT_NAME}-${VERSION}.jar">
 			<fileset dir="${PROJECT_HOME}/build/classes" includes="**/*"/>
@@ -40,7 +40,7 @@
 		</jar>
 	</target>
 	
-	<target name="jar-taglib" description="Jar the project as a taglib." if="is-taglib-project">
+	<target name="jar-taglib" if="is-taglib-project">
 		<mkdir dir="${PROJECT_HOME}/build/dist"/>
 		<jar destfile="${PROJECT_HOME}/build/dist/${PROJECT_SHORT_NAME}-${VERSION}.jar">
 			<fileset dir="${PROJECT_HOME}/build/classes" includes="**/*"/>

@@ -93,19 +93,53 @@ are no guarantees 8-)
 			</fileset>
 		</copy>
 		
-		<zip destfile="${PROJECT_HOME}/build/dist/${PROJECT_NAME}-Windows.zip">
+		<zip destfile="${PROJECT_HOME}/build/dist/${PROJECT_NAME}-${VERSION}_Windows.zip">
 			<fileset dir="${PROJECT_HOME}/build/win/${PROJECT_NAME}"/>
 		</zip>
 
 	</target>
 
 	
-	<target name="linux" depends="jar" description="Builds all Linux packages as defined for the project.  If available, we will also bundle the distro packages for each architecture.">
+	<target name="linux" depends="jar" description="Builds all Linux packages as defined for the project.">
 	
 	</target>
 	
+	<target name="generic" depends="jar" description="Builds a generic package, runnable from console on a number of platforms.">
+		<mkdir dir="${PROJECT_HOME}/build/generic/${PROJECT_NAME}"/>
+		
+		<mkdir dir="${PROJECT_HOME}/build/generic/${PROJECT_NAME}/docs"/>
+		<copy todir="${PROJECT_HOME}/build/generic/${PROJECT_NAME}/docs">
+			<fileset dir="${PROJECT_HOME}/docs">
+				<include name="*.txt"/>
+				<include name="*.rtf"/>
+				<include name="Licenses/*"/>
+			</fileset>
+		</copy>
+
+		<!-- Copy the .jar and .jni files -->		
+		<mkdir dir="${PROJECT_HOME}/build/generic/${PROJECT_NAME}/lib"/>
+		<copy todir="${PROJECT_HOME}/build/generic/${PROJECT_NAME}/lib">
+			<fileset dir="${PROJECT_HOME}/build/dist">
+				<include name="${PROJECT_SHORT_NAME}-${VERSION}.jar"/>
+			</fileset>
+			<fileset dir="${PROJECT_HOME}/lib"/>
+		</copy>	
+
+		<!-- Generate shell script and batch file to start program -->		
+		<echo file="${PROJECT_HOME}/build/generic/${PROJECT_NAME}/${PROJECT_SHORT_NAME}.sh">#!/bin/sh
+#TODO Write out a shell script to start the program.
+		</echo>
+
+		<echo file="${PROJECT_HOME}/build/generic/${PROJECT_NAME}/${PROJECT_SHORT_NAME}.bat">#Windows Batch file
+#TODO Write out a script to start the program.
+		</echo>
+		
+		<zip destfile="${PROJECT_HOME}/build/dist/${PROJECT_SHORT_NAME}-${VERSION}_All.zip">
+			<fileset dir="${PROJECT_HOME}/build/generic/${PROJECT_NAME}"/>
+		</zip>
+	</target> 
 	
-	<target name="osx" depends="jar" description="Builds an OSX package, using JarBundler.  If on a Mac, will also wrap this in a .dmg; otherwise, will wrap in .zip">
+	<target name="osx" depends="jar" description="Builds an OSX package, using JarBundler.">
 		<taskdef name="jarbundler" classpath="${BUILD_LIB}/jarbundler/jarbundler-1.9.jar" classname="net.sourceforge.jarbundler.JarBundler"/>
 
 		<mkdir dir="${PROJECT_HOME}/build/osx/${PROJECT_NAME}"/>
@@ -181,14 +215,14 @@ are no guarantees 8-)
 	</target>
 	
 	
-	<target name="osx_dmg" if="OS_IS_MAC" description="Bundles the Macintosh .app package in a .zip.  Automatically called from target osx if you are building on a Mac.">
+	<target name="osx_dmg" if="OS_IS_MAC">
 		<exec executable="/usr/bin/hdiutil" os="Mac OS X">
-			<arg line="create -format UDZO -srcfolder '${PROJECT_HOME}/build/osx/${PROJECT_NAME}' -o '${PROJECT_HOME}/build/dist/${PROJECT_NAME}.dmg'"/>
+			<arg line="create -format UDZO -srcfolder '${PROJECT_HOME}/build/osx/${PROJECT_NAME}' -o '${PROJECT_HOME}/build/dist/${PROJECT_SHORT_NAME}-${VERSION}.dmg'"/>
 		</exec>
 	</target>
 
-	<target name="osx_zip" unless="OS_IS_MAC" description="Bundles the Macintosh .app package in a .zip.  Automatically called from target osx if you are building on something other than a Mac.">
-		<zip destfile="${PROJECT_HOME}/build/dist/${PROJECT_NAME}-OSX.zip">
-			<fileset dir="${PROJECT_HOME}/build/osx/${PROJECT_SHORT_NAME}"/>
+	<target name="osx_zip" unless="OS_IS_MAC">
+		<zip destfile="${PROJECT_HOME}/build/dist/${PROJECT_SHORT_NAME}-${VERSION}_OSX.zip">
+			<fileset dir="${PROJECT_HOME}/build/osx/${PROJECT_NAME}"/>
 		</zip>
 	</target>
