@@ -7,7 +7,7 @@ To take full advantage of this, you must have the following directory structure:
 ./
 	docs/
 	etc/
-		build.properties (Must include at a minimum 'VERSION=' and 'MAIN-CLASS'.  VM_ARGS and PROGRAM_ARGS are highly recommended.)
+		build.properties (Must include at a minimum PROJECT_NAME, PROJECT_SHORT_NAME, PROJECT_DESCRIPTION, PROJECT_COPYRIGHT, VERSION, and MAIN_CLASS.  VM_ARGS and PROGRAM_ARGS are highly recommended.)
 	img/
 		osx/<PROJECT_SHORT_NAME>.icns
 		windows/<PROJECT_SHORT_NAME>.ico
@@ -140,21 +140,21 @@ are no guarantees 8-)
 	</target> 
 	
 	<target name="osx" depends="jar" description="Builds an OSX package, using JarBundler.">
-		<taskdef name="jarbundler" classpath="${BUILD_LIB}/jarbundler/jarbundler-1.9.jar" classname="net.sourceforge.jarbundler.JarBundler"/>
+		<taskdef name="jarbundler" classpath="${BUILD_LIB}/jarbundler-2.2.0/jarbundler-2.2.0.jar" classname="net.sourceforge.jarbundler.JarBundler"/>
 
 		<mkdir dir="${PROJECT_HOME}/build/osx/${PROJECT_NAME}"/>
 		<jarbundler dir="${PROJECT_HOME}/build/osx/${PROJECT_NAME}" verbose="true" showPlist="false"
-	        name="${PROJECT_NAME}"
-	        shortname="${PROJECT_NAME}"
-	        signature="????"
-	        stubfile="${BUILD_ETC}/osx/JavaApplicationStub"
-	        mainclass="${MAIN_CLASS}"
-	        icon="${PROJECT_HOME}/img/osx/${PROJECT_SHORT_NAME}.icns"
-	        jvmversion="1.5+"
-	        version="${VERSION}"
-	        infostring="${PROJECT_NAME}, ${VERSION}"
-	        bundleid="${MAIN_CLASS}"
-	        arguments="${PROGRAM_ARGS}"
+			name="${PROJECT_NAME}"
+			shortname="${PROJECT_NAME}"
+			signature="????"
+			stubfile="${BUILD_ETC}/osx/JavaApplicationStub"
+			mainclass="${MAIN_CLASS}"
+			icon="${PROJECT_HOME}/img/osx/${PROJECT_SHORT_NAME}.icns"
+			jvmversion="1.5+"
+			version="${VERSION}"
+			infostring="${PROJECT_NAME}, ${VERSION}"
+			bundleid="${MAIN_CLASS}"
+			arguments="${PROGRAM_ARGS}"
 			vmoptions="${VM_ARGS}">
 
 			<jarfileset file="${PROJECT_HOME}/build/dist/${PROJECT_SHORT_NAME}-${VERSION}.jar" />
@@ -167,16 +167,16 @@ are no guarantees 8-)
 			<jarfileset dir="${PROJECT_HOME}/lib/osx">
 				<include name="*.jar"/>
 				<include name="*.jnilib"/>
-			</jarfileset>			 
+			</jarfileset>
 
 			<!-- Associate document types with this application.  
-			     Unfortunately, I can't figure out a way to 
-			     abstract this functionality into a configuration
-			     file or the properties at the top of the build
-			     script - if someone knows how to do this, so that
-			     I can use a single build script for multiple 
-			     applications and only change the properties, 
-			     please let me know!
+				Unfortunately, I can't figure out a way to 
+				abstract this functionality into a configuration
+				file or the properties at the top of the build
+				script - if someone knows how to do this, so that
+				I can use a single build script for multiple 
+				applications and only change the properties, 
+				please let me know!
 			<documenttype name="Buddi Data"
 				extensions="buddi3"
 				iconFile="${IMG}/osx/BuddiData.icns"
@@ -192,7 +192,6 @@ are no guarantees 8-)
 				iconFile="${IMG}/osx/BuddiLanguage.icns"
 				role="Editor"/>
 			-->
-
 		</jarbundler>
 
 		<copy todir="${PROJECT_HOME}/build/osx/${PROJECT_NAME}">

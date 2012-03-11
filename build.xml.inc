@@ -32,6 +32,22 @@
 		<antcall target="jar-taglib"/>
 	</target>
 
+	<target name="war" depends="jar" description="War the project">
+		<mkdir dir="${PROJECT_HOME}/build/dist"/>
+		<war destfile="${PROJECT_HOME}/build/dist/${PROJECT_SHORT_NAME}.war" webxml="${PROJECT_HOME}/WebContent/WEB-INF/web.xml">
+			<lib dir="${PROJECT_HOME}/WebContent/WEB-INF/lib">
+				<include name="*.jar"/>
+			</lib>
+			<lib dir="${PROJECT_HOME}/build/dist">
+				<include name="${PROJECT_SHORT_NAME}-${VERSION}.jar"/>
+			</lib>
+			<zipfileset dir="${PROJECT_HOME}/WebContent">
+				<exclude name="classes"/>
+				<exclude name="lib"/>
+			</zipfileset>
+		</war>
+	</target>
+
 	<target name="jar-standard" unless="is-taglib-project">
 		<mkdir dir="${PROJECT_HOME}/build/dist"/>
 		<jar destfile="${PROJECT_HOME}/build/dist/${PROJECT_SHORT_NAME}-${VERSION}.jar">
