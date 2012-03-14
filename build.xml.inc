@@ -42,8 +42,8 @@
 				<include name="${PROJECT_SHORT_NAME}-${VERSION}.jar"/>
 			</lib>
 			<zipfileset dir="${PROJECT_HOME}/WebContent">
-				<exclude name="classes"/>
-				<exclude name="lib"/>
+				<exclude name="WEB-INF/classes/**"/>
+				<exclude name="WEB-INF/lib/**"/>
 			</zipfileset>
 		</war>
 	</target>
