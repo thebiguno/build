@@ -1,5 +1,10 @@
 	<property name="PROJECT_HOME" value = "."/>
-
+	<exec outputproperty="GIT_VERSION" executable="git">
+		<arg value="describe"/>
+		<arg value="--long"/>
+		<arg value="--tags"/>
+	</exec>
+	
 	<target name="javadocs" depends="clean" description="Creates the javadocs">
 		<mkdir dir="${PROJECT_HOME}/build/javadocs"/>
 		<javadoc destdir="${PROJECT_HOME}/build/javadocs" 
@@ -12,7 +17,7 @@
 	</target>
 	
 	<target name="release" depends="jar,javadocs" description="Build a release package including jar, javadocs, and changelog">
-		<zip destfile="${PROJECT_HOME}/build/dist/${PROJECT_SHORT_NAME}-${VERSION}.zip">
+		<zip destfile="${PROJECT_HOME}/build/dist/${PROJECT_SHORT_NAME}-${GIT_VERSION}.zip">
 			<zipfileset prefix="lib" dir="${PROJECT_HOME}/build/dist">
 				<include name="*.jar"/>
 			</zipfileset>
@@ -39,7 +44,7 @@
 				<include name="*.jar"/>
 			</lib>
 			<lib dir="${PROJECT_HOME}/build/dist">
-				<include name="${PROJECT_SHORT_NAME}-${VERSION}.jar"/>
+				<include name="${PROJECT_SHORT_NAME}-${GIT_VERSION}.jar"/>
 			</lib>
 			<zipfileset dir="${PROJECT_HOME}/WebContent">
 				<exclude name="WEB-INF/classes/**"/>
@@ -50,7 +55,7 @@
 
 	<target name="jar-standard" unless="is-taglib-project">
 		<mkdir dir="${PROJECT_HOME}/build/dist"/>
-		<jar destfile="${PROJECT_HOME}/build/dist/${PROJECT_SHORT_NAME}-${VERSION}.jar">
+		<jar destfile="${PROJECT_HOME}/build/dist/${PROJECT_SHORT_NAME}-${GIT_VERSION}.jar">
 			<fileset dir="${PROJECT_HOME}/build/classes" includes="**/*"/>
 			<fileset dir="${PROJECT_HOME}/src" includes="**/*"/>
 		</jar>
@@ -58,7 +63,7 @@
 	
 	<target name="jar-taglib" if="is-taglib-project">
 		<mkdir dir="${PROJECT_HOME}/build/dist"/>
-		<jar destfile="${PROJECT_HOME}/build/dist/${PROJECT_SHORT_NAME}-${VERSION}.jar">
+		<jar destfile="${PROJECT_HOME}/build/dist/${PROJECT_SHORT_NAME}-${GIT_VERSION}.jar">
 			<fileset dir="${PROJECT_HOME}/build/classes" includes="**/*"/>
 			<fileset dir="${PROJECT_HOME}/src" includes="**/*"/>
 			<metainf dir="${PROJECT_HOME}/WebContent/WEB-INF/tlds">
