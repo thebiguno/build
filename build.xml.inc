@@ -82,7 +82,9 @@
 			destdir="build/classes" 
 			debug="true" 
 			debuglevel="lines,vars,source" 
-			classpathref="classpath"/>
+			classpathref="classpath">
+			<exclude name="${COMPILE_EXCLUDES}"/>
+		</javac>
 	</target>
 
 	<target name="clean" description="Removes all files from build directory">
