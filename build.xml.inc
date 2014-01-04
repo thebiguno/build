@@ -38,8 +38,15 @@
 	</target>
 
 	<target name="war" depends="jar" description="War the project">
+		<mkdir dir="${PROJECT_HOME}/build/temp/classes"/>
+		<filter token="environment" value="${PROJECT_SHORT_NAME}"/>
+		<copy filtering="true" todir="${PROJECT_HOME}/build/temp/classes" overwrite="true">
+			<fileset dir="${PROJECT_HOME}/WebContent/WEB-INF/classes"/>
+		</copy>
+		
 		<mkdir dir="${PROJECT_HOME}/build/dist"/>
 		<war destfile="${PROJECT_HOME}/build/dist/${PROJECT_SHORT_NAME}.war" webxml="${PROJECT_HOME}/WebContent/WEB-INF/web.xml">
+			<classes dir="${PROJECT_HOME}/build/temp/classes"/>
 			<lib dir="${PROJECT_HOME}/WebContent/WEB-INF/lib">
 				<include name="*.jar"/>
 			</lib>
