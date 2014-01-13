@@ -62,9 +62,10 @@
 
 	<target name="jar-standard" unless="is-taglib-project">
 		<mkdir dir="${PROJECT_HOME}/build/dist"/>
-		<jar destfile="${PROJECT_HOME}/build/dist/${PROJECT_SHORT_NAME}-${GIT_VERSION}.jar">
+		<jar destfile="${PROJECT_HOME}/build/dist/${PROJECT_SHORT_NAME}-${GIT_VERSION}.jar" filesetmanifest="merge">
 			<fileset dir="${PROJECT_HOME}/build/classes" includes="**/*"/>
 			<fileset dir="${PROJECT_HOME}/src" includes="**/*"/>
+			<fileset dir="${PROJECT_HOME}/" includes="META-INF/MANIFEST.MF"/>
 		</jar>
 	</target>
 	
