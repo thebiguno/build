@@ -4,6 +4,10 @@
 		<arg value="--long"/>
 		<arg value="--tags"/>
 	</exec>
+
+	<tstamp>
+		<format property="TIMESTAMP" pattern="yyyyMMddHHmm"/>
+	</tstamp>
 	
 	<target name="javadocs" depends="clean" description="Creates the javadocs">
 		<mkdir dir="${PROJECT_HOME}/build/javadocs"/>
@@ -62,10 +66,18 @@
 
 	<target name="jar-standard" unless="is-taglib-project">
 		<mkdir dir="${PROJECT_HOME}/build/dist"/>
+		<mkdir dir="${PROJECT_HOME}/build/temp/META-INF"/>
+		<filter token="QUALIFIER" value="${TIMESTAMP}"/>
+		<copy filtering="true" todir="build/temp/META-INF" overwrite="true">
+			<fileset dir="${PROJECT_HOME}/META-INF">
+				<include name="MANIFEST.MF"/>
+			</fileset>
+		</copy>
+
 		<jar destfile="${PROJECT_HOME}/build/dist/${PROJECT_SHORT_NAME}-${GIT_VERSION}.jar" filesetmanifest="merge">
 			<fileset dir="${PROJECT_HOME}/build/classes" includes="**/*"/>
 			<fileset dir="${PROJECT_HOME}/src" includes="**/*"/>
-			<fileset dir="${PROJECT_HOME}/" includes="META-INF/MANIFEST.MF"/>
+			<fileset dir="${PROJECT_HOME}/build/temp" includes="META-INF/MANIFEST.MF"/>
 		</jar>
 	</target>
 	
