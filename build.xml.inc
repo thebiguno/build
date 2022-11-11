@@ -95,8 +95,8 @@
 	<target name="compile" depends="clean" description="Builds the project">
 		<mkdir dir="${PROJECT_HOME}/build/classes"/>
 		<javac srcdir="src" 
-			target="1.5"
-			source="1.5" 
+			target="1.6"
+			source="1.6" 
 			optimize="true" 
 			includes="**/*" 
 			destdir="build/classes" 
